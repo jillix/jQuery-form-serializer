@@ -121,87 +121,6 @@
         return result;
     };
 
-    /**
-     * cloneObject
-     * Clones an object
-     *
-     * @name cloneObject
-     * @function
-     * @param {Object} item Object that should be cloned
-     * @param {Boolean} deepClone If true, the subfields of the @item function will be cloned
-     * @return {Object} The cloned object
-     */
-    Utils.cloneObject = function(item, deepClone) {
-        if (!deepClone) {
-            var c = function() {};
-            c.prototype = Object(item);
-            return new c();
-        }
-
-        if (!item) {
-            return item;
-        } // null, undefined values check
-
-        var types = [Number, String, Boolean];
-        var result;
-
-        // normalizing primitives if someone did new String('aaa'), or new Number('444');
-        types.forEach(function(type) {
-            if (item instanceof type) {
-                result = type(item);
-            }
-        });
-
-        if (typeof result == "undefined") {
-            if (Object.prototype.toString.call(item) === "[object Array]") {
-                result = [];
-                item.forEach(function(child, index, array) {
-                    result[index] = Utils.cloneObject(child, true);
-                });
-            } else if (typeof item == "object") {
-                // testing that this is DOM
-                if (item.nodeType && typeof item.cloneNode == "function") {
-                    result = item.cloneNode(true);
-                } else if (!item.prototype) { // check that this is a literal
-                    if (item instanceof Date) {
-                        result = new Date(item);
-                    } else {
-                        // it is an object literal
-                        result = {};
-                        for (var i in item) {
-                            result[i] = Utils.cloneObject(item[i], true);
-                        }
-                    }
-                } else {
-                    // depending what you would like here,
-                    // just keep the reference, or create new object
-                    if (false && item.constructor) {
-                        // would not advice to do that, reason? Read below
-                        result = new item.constructor();
-                    } else {
-                        result = item;
-                    }
-                }
-            } else {
-                result = item;
-            }
-        }
-
-        return result;
-    };
-
-    /**
-     * slug
-     * Converts a string to slug
-     *
-     * @name slug
-     * @function
-     * @param {String} input The input string that should be converted to slug
-     * @return {String} The slug that was generated
-     */
-    Utils.slug = function(input) {
-        return input.replace(/[^A-Za-z0-9-]+/g, '-').toLowerCase();
-    };
 
     // Converters
     var Converters = {
@@ -224,7 +143,7 @@
 
         var settings = $.extend({
 
-        }, opt_options);
+        }, options);
 
         var $self = this;
 
@@ -288,7 +207,7 @@
                 serializedForm = Utils.unflattenObject(serializedForm);
 
                 // emit an eventName or "serializedForm" event
-                $self.trigger("serializer:data", serializedForm);
+                $self.trigger("serializer:data", [serializedForm]);
             },
             fill: function (e) {
                 var flattenForm = Utils.flattenObject(data);
@@ -309,12 +228,23 @@
             }
         };
 
-        $self.on("serializer:submit", handlers.serialize);
-        $self.on("serializer:fill", handlers.fill);
-        $self.on("submit", "form", function (e) {
-            $self.trigger("serializer:submit", e);
+        $self.on("serializer:submit", function () {
+            handlers.serialize.apply(this, arguments);
+        });
+
+        $self.on("serializer:fill", function () {
+            handlers.fill.apply(this, arguments);
+        });
+
+        function submit(e) {
+            $(this).trigger("serializer:submit", e);
             e.preventDefault();
             return false;
-        });
+        }
+
+        $self.on("submit", "form", submit);
+        $self.on("submit", submit);
+
+        return $self;
     };
 })(this, this.$ || this.jQuery);
