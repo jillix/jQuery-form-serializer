@@ -1,13 +1,7 @@
 # jQuery-form-serializer
 Serialize forms to JSON objects in a friendly way.
 
-## Installation
-
-```sh
-$ git clone git@github.com:jillix/jQuery-form-serializer.git jQuery-form-serializer
-$ cd jQuery-form-serializer
-$ npm install
-```
+[![](http://i.imgur.com/FD9iFAx.jpg)](http://jillix.github.io/jQuery-form-serializer/)
 
 ## Documentation
 ### `serializer()`
