@@ -53,7 +53,8 @@
         </header>
         <article>
             <div class="container">
-                <h2>Demo</h2>
+                <h2>Examples</h2>
+                <h3>Using <code>data-field</code> and <code>data-convert-to</code></h3>
                 <div class="row">
                     <div class="col-lg-6">
                         <pre>&lt;script src=&quot;path/to/jQuery.js&quot;&gt;&lt;/script&gt;
@@ -66,9 +67,47 @@
         })
         ;
 &lt;/script&gt;</pre>
+                        <p>When passing the <code>data-convert-to</code> attribute, the value will be converted in that data type. Currently the following are supported:</p>
+                        <ul>
+                            <li><code>string</code></li>
+                            <li><code>number</code></li>
+                            <li><code>boolean</code></li>
+                        </ul>
+
+                        <p><code>data-field</code> is mandatory for the fields which you want to be listed in the JSON object.</p>
+                        <p>Inspect the HTML with the browser developer tools so you can see what's behind this pretty form.</p>
+
+                        <form id="fill-form">
+                            <fieldset>
+                                <!-- Textarea -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="fill-content">Content</label>
+                                    <div class="col-md-5">
+                                        <textarea  class="form-control" data-field="content" id="fill-content" data-convert-to="json">{
+    "name": {
+        "first": "Johnny"
+      , "last": "B."
+    }
+  , "age": 19
+  , "developer": true
+  , "bio": "I'm a web developer and pianist from Romania."
+}</textarea>
+                                <!-- Button -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="submit-fill"></label>
+                                    <div class="col-md-5">
+                                        <button id="submit-fill" name="submit-fill" class="btn btn-success">Fill Form</button>
+                                    </div>
+                                </div>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+
                     </div>
                     <div class="col-lg-6">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal demo-form">
                             <fieldset>
 
                                 <!-- Text input-->
@@ -93,8 +132,17 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="age">Age</label>
                                     <div class="col-md-5">
-                                        <input id="age" value="19" data-convert-to="number" data-field="age" name="age" type="number" placeholder="" class="form-control input-md" required="">
-                                        <span class="help-block">How old are you?</span>
+                                        <input id="age" value="19" data-convert-to="number" data-field="age" name="age" type="number" placeholder="" class="form-control input-md" data-delete-if="0" required="">
+                                        <span class="help-block">How old are you? If you provide <code>0</code>, the <code>age</code> field will be deleted.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="developer">Developer</label>
+                                    <div class="col-md-5">
+                                        <input id="developer" data-field="developer" type="checkbox" data-value="prop" data-params="checked">
+                                        <span class="help-block">How old are you? If you provide <code>0</code>, the <code>age</code> field will be deleted.</span>
                                     </div>
                                 </div>
 
@@ -103,6 +151,14 @@
                                     <label class="col-md-4 control-label" for="bio">Bio</label>
                                     <div class="col-md-5">
                                         <textarea class="form-control" data-field="bio" id="bio" name="bio" placeholder="Write something cool...">I'm a web developer and pianist from Romania.</textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Textarea -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="readonly">Readonly</label>
+                                    <div class="col-md-5">
+                                        <span data-field="readonly" id="readonly" data-value="html">I'm readonly content and my value is taken with <code>data-value="html"</code>.</span>
                                     </div>
                                 </div>
 
