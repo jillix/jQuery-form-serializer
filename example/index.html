@@ -53,8 +53,7 @@
         </header>
         <article>
             <div class="container">
-                <h2>Examples</h2>
-                <h3>Using <code>data-field</code> and <code>data-convert-to</code></h3>
+                <h2>Example</h2>
                 <div class="row">
                     <div class="col-lg-6">
                         <pre>&lt;script src=&quot;path/to/jQuery.js&quot;&gt;&lt;/script&gt;
@@ -77,12 +76,12 @@
                         <p><code>data-field</code> is mandatory for the fields which you want to be listed in the JSON object.</p>
                         <p>Inspect the HTML with the browser developer tools so you can see what's behind this pretty form.</p>
 
-                        <form id="fill-form">
+                        <form id="fill-form" class="form-horizontal">
                             <fieldset>
                                 <!-- Textarea -->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="fill-content">Content</label>
-                                    <div class="col-md-5">
+                                    <label class="col-md-2 control-label" for="fill-content">Content</label>
+                                    <div class="col-md-10">
                                         <textarea  class="form-control" data-field="content" id="fill-content" data-convert-to="json">{
     "name": {
         "first": "Johnny"
@@ -96,7 +95,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="submit-fill"></label>
                                     <div class="col-md-5">
-                                        <button id="submit-fill" name="submit-fill" class="btn btn-success">Fill Form</button>
+                                        <button id="submit-fill" class="btn btn-success">Fill Form</button>
                                     </div>
                                 </div>
                                     </div>
@@ -114,7 +113,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="first-name">First name</label>
                                     <div class="col-md-5">
-                                        <input id="first-name" value="Johnny" data-field="name.first" name="first-name" type="text" placeholder="" class="form-control input-md" required="">
+                                        <input id="first-name" data-field="name.first" type="text" placeholder="" class="form-control input-md" required="">
                                         <span class="help-block">Enter your first name.</span>
                                     </div>
                                 </div>
@@ -123,7 +122,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="last-name">Last name</label>
                                     <div class="col-md-5">
-                                        <input id="last-name" value="B." data-field="name.last" name="last-name" type="text" placeholder="" class="form-control input-md" required="">
+                                        <input id="last-name" data-field="name.last" type="text" placeholder="" class="form-control input-md" required="">
                                         <span class="help-block">Enter your first name.</span>
                                     </div>
                                 </div>
@@ -132,7 +131,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="age">Age</label>
                                     <div class="col-md-5">
-                                        <input id="age" value="19" data-convert-to="number" data-field="age" name="age" type="number" placeholder="" class="form-control input-md" data-delete-if="0" required="">
+                                        <input id="age" data-convert-to="number" data-field="age" type="number" placeholder="" class="form-control input-md" data-delete-if="0" required="">
                                         <span class="help-block">How old are you? If you provide <code>0</code>, the <code>age</code> field will be deleted.</span>
                                     </div>
                                 </div>
@@ -150,7 +149,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="bio">Bio</label>
                                     <div class="col-md-5">
-                                        <textarea class="form-control" data-field="bio" id="bio" name="bio" placeholder="Write something cool...">I'm a web developer and pianist from Romania.</textarea>
+                                        <textarea class="form-control" data-field="bio" id="bio" placeholder="Write something cool...">I'm a web developer and pianist from Romania.</textarea>
                                     </div>
                                 </div>
 
@@ -166,7 +165,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="submit"></label>
                                     <div class="col-md-5">
-                                        <button id="submit" name="submit" class="btn btn-success">Submit</button>
+                                        <button id="submit" class="btn btn-success">Submit</button>
                                     </div>
                                 </div>
 

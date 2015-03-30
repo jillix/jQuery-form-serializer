@@ -59,3 +59,12 @@ line {
 #dinos {
     display: none;
 }
+
+#fill-content {
+    height: 220px;
+    font-family: "Monaco", monospace;
+}
+
+textarea {
+    resize: vertical;
+}
