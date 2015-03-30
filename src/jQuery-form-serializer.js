@@ -163,7 +163,7 @@
                 // The final object should be unflatten
                 serializedForm = Utils.unflattenObject(serializedForm);
 
-                // emit an eventName or "serializedForm" event
+                // "serializer:data" event
                 $self.trigger("serializer:data", [serializedForm]);
             },
             fill: function (e, data) {
