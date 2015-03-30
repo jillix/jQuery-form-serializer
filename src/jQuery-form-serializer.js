@@ -124,14 +124,18 @@
 
     // Converters
     var Converters = {
-            string: function (value) {
-            return value.toString();
+        string: function (value) {
+            return String(value);
         },
         number: function (value) {
-            return Number (value);
+            return Number(value);
         },
-        boolean: function (value) {
+        "boolean": function (value) {
             return (value === true || value === "true" || value === "on" || typeof value == "number" && value > 0 || value === "1");
+        },
+        "json": function (value) {
+            if (!value) { return null; }
+            return JSON.parse(value);
         }
     };
 
@@ -186,7 +190,7 @@
                     var howArguments = params ? [params] : [];
 
                     // Create the value
-                    var value = $element[how].apply($element, params);
+                    var value = $element[how].apply($element, howArguments);
 
                     // Convert to a valid value
                     if (convertTo && Converters[convertTo]) {
@@ -209,17 +213,17 @@
                 // emit an eventName or "serializedForm" event
                 $self.trigger("serializer:data", [serializedForm]);
             },
-            fill: function (e) {
+            fill: function (e, data) {
                 var flattenForm = Utils.flattenObject(data);
                 var fields = Object.keys(flattenForm);
 
                 fields.forEach(function (c) {
-                    var $field = $("[data-field='" + c + "']", $self);
+                    var $field = $("[data-field='" + c + "']", e.target);
                     var dataParams = $field.attr("data-params");
                     var dataValue = $field.attr("data-value");
                     var args = dataParams ? [dataParams] : [];
 
-                    args.push(flattenForm[cField]);
+                    args.push(flattenForm[c]);
                     dataValue = dataValue || "val";
 
                     $field[dataValue].apply($field, args);
