@@ -1,5 +1,5 @@
 {
-  "name": "jQuery-form-serializer",
+  "name": "jquery-form-serializer",
   "version": "1.0.0",
   "description": "Serialize forms to JSON objects in a friendly way.",
   "main": "src/jQuery-form-serializer.js",
