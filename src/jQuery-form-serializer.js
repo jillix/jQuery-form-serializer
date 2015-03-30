@@ -107,7 +107,7 @@
         // Multiple elements
         if ($self.length > 1) {
             $self.each(function () {
-                $(this).serializer(options);
+                $(this).serializer();
             });
             return $self;
         }
