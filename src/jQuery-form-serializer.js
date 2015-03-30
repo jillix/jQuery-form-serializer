@@ -8,53 +8,6 @@
     var Utils = {};
 
     /**
-     * findValue
-     * Finds a value in parent (object) using the dot notation passed in dotNot.
-     *
-     * @name findValue
-     * @function
-     * @param {Object} parent The object containing the searched value
-     * @param {String} dotNot Path to the value
-     * @return {Anything} Found value or undefined
-     */
-    Utils.findValue = function(parent, dotNot) {
-
-        if (!dotNot || !dotNot) return undefined;
-
-        var splits = dotNot.split(".");
-        var value;
-
-        for (var i = 0; i < splits.length; ++i) {
-            value = parent[splits[i]];
-            if (value === undefined) return undefined;
-            if (typeof value === "object") parent = value;
-        }
-
-        return value;
-    };
-
-    /**
-     * findFunction
-     * Finds a function in parent (object) using the dot notation passed in dotNot.
-     *
-     * @name findFunction
-     * @function
-     * @param {Object} parent The object containing the searched function
-     * @param {String} dotNot Path to the function value
-     * @return {Function} Function that was found in the parent object
-     */
-    Utils.findFunction = function(parent, dotNot) {
-
-        var func = Utils.findValue(parent, dotNot);
-
-        if (typeof func !== "function") {
-            return undefined;
-        }
-
-        return func;
-    };
-
-    /**
      * flattenObject
      * Converts an object to a flat one
      *
@@ -139,15 +92,15 @@
         }
     };
 
-    $.fn.serializer = function (options) {
-
-        if (typeof options === "") {
-
-        }
-
-        var settings = $.extend({
-
-        }, options);
+    /**
+     * serializer
+     * Create the form serializer.
+     *
+     * @name serializer
+     * @function
+     * @return {jQuery} The selected elements.
+     */
+    $.fn.serializer = function () {
 
         var $self = this;
 
