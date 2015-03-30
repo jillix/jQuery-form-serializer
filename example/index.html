@@ -61,7 +61,7 @@
 &lt;script&gt;
     $(&quot;form&quot;)
         .serializer();
-        .on(&quot;serializer:data&quot;, function (formData) {
+        .on(&quot;serializer:data&quot;, function (e, formData) {
             alert(JSON.stringify(formData));
         })
         ;
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="first-name">First name</label>
                                     <div class="col-md-5">
-                                        <input id="first-name" data-field="name.first" name="first-name" type="text" placeholder="" class="form-control input-md" required="">
+                                        <input id="first-name" value="Johnny" data-field="name.first" name="first-name" type="text" placeholder="" class="form-control input-md" required="">
                                         <span class="help-block">Enter your first name.</span>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="last-name">Last name</label>
                                     <div class="col-md-5">
-                                        <input id="last-name" data-field="name.last" name="last-name" type="text" placeholder="" class="form-control input-md" required="">
+                                        <input id="last-name" value="B." data-field="name.last" name="last-name" type="text" placeholder="" class="form-control input-md" required="">
                                         <span class="help-block">Enter your first name.</span>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="age">Age</label>
                                     <div class="col-md-5">
-                                        <input id="age" data-convert-to="number" data-field="age" name="age" type="number" placeholder="" class="form-control input-md" required="">
+                                        <input id="age" value="19" data-convert-to="number" data-field="age" name="age" type="number" placeholder="" class="form-control input-md" required="">
                                         <span class="help-block">How old are you?</span>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="bio">Bio</label>
                                     <div class="col-md-5">
-                                        <textarea class="form-control" data-field="bio" id="bio" name="bio" placeholder="Write something cool..."></textarea>
+                                        <textarea class="form-control" data-field="bio" id="bio" name="bio" placeholder="Write something cool...">I'm a web developer and pianist from Romania.</textarea>
                                     </div>
                                 </div>
 
