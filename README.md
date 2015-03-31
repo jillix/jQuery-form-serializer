@@ -3,6 +3,21 @@ Serialize forms to JSON objects in a friendly way.
 
 [![](http://i.imgur.com/FD9iFAx.jpg)](http://jillix.github.io/jQuery-form-serializer/)
 
+## Example
+
+```html
+<script src="path/to/jQuery.js"></script>
+<script src="path/to/jQuery-serializer.js"></script>
+<script>
+    $("form")
+        .serializer();
+        .on("serializer:data", function (e, formData) {
+            alert(JSON.stringify(formData));
+        })
+        ;
+</script>
+```
+
 ## Documentation
 ### `serializer()`
 Create the form serializer.
