@@ -6,6 +6,63 @@ Serialize forms to JSON objects in a friendly way.
 ## Example
 
 ```html
+<form class="form-horizontal demo-form">
+    <fieldset>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="first-name">First name</label>
+            <div class="col-md-5">
+                <input id="first-name" data-field="name.first" type="text" placeholder="" class="form-control input-md" required="">
+                <span class="help-block">Enter your first name.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="last-name">Last name</label>
+            <div class="col-md-5">
+                <input id="last-name" data-field="name.last" type="text" placeholder="" class="form-control input-md" required="">
+                <span class="help-block">Enter your first name.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="age">Age</label>
+            <div class="col-md-5">
+                <input id="age" data-convert-to="number" data-field="age" type="number" placeholder="" class="form-control input-md" data-delete-if="0" required="">
+                <span class="help-block">How old are you? If you provide <code>0</code>, the <code>age</code> field will be deleted.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="developer">Developer</label>
+            <div class="col-md-5">
+                <input id="developer" data-field="developer" type="checkbox" data-value="prop" data-params="checked">
+                <span class="help-block">How old are you? If you provide <code>0</code>, the <code>age</code> field will be deleted.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bio">Bio</label>
+            <div class="col-md-5">
+                <textarea class="form-control" data-field="bio" id="bio" placeholder="Write something cool...">I'm a web developer and pianist from Romania.</textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="readonly">Readonly</label>
+            <div class="col-md-5">
+                <span data-field="readonly" id="readonly" data-value="html">I'm readonly content and my value is taken with <code>data-value="html"</code>.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-5">
+                <button id="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
 <script src="path/to/jQuery.js"></script>
 <script src="path/to/jQuery-serializer.js"></script>
 <script>
