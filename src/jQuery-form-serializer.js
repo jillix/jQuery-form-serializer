@@ -164,7 +164,7 @@
                 serializedForm = Utils.unflattenObject(serializedForm);
 
                 // "serializer:data" event
-                $self.trigger("serializer:data", [serializedForm]);
+                $(this).trigger("serializer:data", [serializedForm]);
             },
             fill: function (e, data) {
                 var flattenForm = Utils.flattenObject(data);
@@ -185,16 +185,16 @@
             }
         };
 
-        $self.on("serializer:submit", function () {
-            handlers.serialize.apply(this, arguments);
+        $self.on("serializer:submit", function (e) {
+            handlers.serialize.apply(e.target, arguments);
         });
 
-        $self.on("serializer:fill", function () {
-            handlers.fill.apply(this, arguments);
+        $self.on("serializer:fill", function (e) {
+            handlers.fill.apply(e.target, arguments);
         });
 
         function submit(e) {
-            $(this).trigger("serializer:submit", e);
+            $(this).trigger("serializer:submit", [e]);
             e.preventDefault();
             return false;
         }
@@ -206,4 +206,4 @@
     };
 
     $.fn.serializer.version = "1.0.0";
-})(this, this.$ || this.jQuery);
+})(this, require("/libs/jquery"));
