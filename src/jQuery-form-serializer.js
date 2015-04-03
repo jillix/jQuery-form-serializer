@@ -205,5 +205,5 @@
         return $self;
     };
 
-    $.fn.serializer.version = "1.0.0";
+    $.fn.serializer.version = "1.1.0";
 })(this, this.$ || this.jQuery);
