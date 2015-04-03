@@ -206,4 +206,4 @@
     };
 
     $.fn.serializer.version = "1.0.0";
-})(this, require("/libs/jquery"));
+})(this, this.$ || this.jQuery);
