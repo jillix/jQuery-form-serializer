@@ -151,6 +151,7 @@ $("form").trigger("serializer:fill", [formData]);
                     <li><code>string</code></li>
                     <li><code>number</code></li>
                     <li><code>boolean</code></li>
+                    <li><code>json</code></li>
                 </ul>
             </td>
             <td>No default value</td>
