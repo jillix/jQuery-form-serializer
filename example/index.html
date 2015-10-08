@@ -66,13 +66,6 @@
         })
         ;
 &lt;/script&gt;</pre>
-                        <p>When passing the <code>data-convert-to</code> attribute, the value will be converted in that data type. Currently the following are supported:</p>
-                        <ul>
-                            <li><code>string</code></li>
-                            <li><code>number</code></li>
-                            <li><code>boolean</code></li>
-                        </ul>
-
                         <p><code>data-field</code> is mandatory for the fields which you want to be listed in the JSON object.</p>
                         <p>Inspect the HTML with the browser developer tools so you can see what's behind this pretty form.</p>
 
@@ -87,9 +80,10 @@
         "first": "Johnny"
       , "last": "B."
     }
-  , "age": 19
+  , "age": 20
   , "developer": true
   , "bio": "I'm a web developer and pianist from Romania."
+  , "jsonObj": { "I am a pretty": "JSON object!" }
 }</textarea>
                                 <!-- Button -->
                                 <div class="form-group">
@@ -149,15 +143,22 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="bio">Bio</label>
                                     <div class="col-md-5">
-                                        <textarea class="form-control" data-field="bio" id="bio" placeholder="Write something cool...">I'm a web developer and pianist from Romania.</textarea>
+                                        <textarea class="form-control" data-field="bio" id="bio" placeholder="Write something cool..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="readonly">Readonly</label>
+                                    <div class="col-md-5">
+                                        <span data-field="readonly" id="readonly" data-value="html">I'm readonly content and my value is taken with <code>data-value="html"</code>.</span>
                                     </div>
                                 </div>
 
                                 <!-- Textarea -->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="readonly">Readonly</label>
+                                    <label class="col-md-4 control-label" for="jsonObj">JSON Object</label>
                                     <div class="col-md-5">
-                                        <span data-field="readonly" id="readonly" data-value="html">I'm readonly content and my value is taken with <code>data-value="html"</code>.</span>
+                                        <textarea class="form-control" data-convert-to="json" data-field="jsonObj" id="jsonObj" placeholder="I should be a valid JSON."></textarea>
                                     </div>
                                 </div>
 
